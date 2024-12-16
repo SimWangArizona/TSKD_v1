@@ -1,0 +1,68 @@
+device: cuda
+
+dataloader:
+  batch_size: 128
+
+# Convolutional LSTM structure
+LSTM:
+  in_seq_len: 3
+  out_seq_len: 1
+  num_branch: 3
+
+  encoder:
+    ConvLSTM_layer1:
+      input_channel: 8
+      num_filter: 64
+      height: 96
+      width: 96
+      kernel_size: 3
+      stride: 1
+      padding: 1
+
+    ConvLSTM_layer2:
+      input_channel: 192
+      num_filter: 192
+      height: 32
+      width: 32
+      kernel_size: 3
+      stride: 1
+      padding: 1
+
+    ConvLSTM_layer3:
+      input_channel: 192
+      num_filter: 192
+      height: 16
+      width: 16
+      kernel_size: 3
+      stride: 1
+      padding: 1
+
+  forecaster:
+    ConvLSTM_layer1:
+      input_channel: 192
+      num_filter: 192
+      height: 16
+      width: 16
+      kernel_size: 3
+      stride: 1
+      padding: 1
+
+    ConvLSTM_layer2:
+      input_channel: 192
+      num_filter: 192
+      height: 32
+      width: 32
+      kernel_size: 3
+      stride: 1
+      padding: 1
+
+    ConvLSTM_layer3:
+      input_channel: 64
+      num_filter: 64
+      height: 96
+      width: 96
+      kernel_size: 3
+      stride: 1
+      padding: 1
+
+
